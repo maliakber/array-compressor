@@ -1,7 +1,7 @@
 #include "system.h"
 
 // assuming maximum size of the array will be 256
-// if not, we can just change the datatype and a little change in the codebase
+// if not, we can just change the uint8_t datatype to uint16_t or uint32_t and a little change in the codebase
 uint8_t byte_compress(uint8_t data_ptr[], uint8_t data_size)
 {
     if(data_size == 0u) // if the array is empty, nothing to compress
@@ -15,7 +15,7 @@ uint8_t byte_compress(uint8_t data_ptr[], uint8_t data_size)
     {
         uint8_t cur_val = cur_read_ptr < data_size ? data_ptr[cur_read_ptr] : 0xFF; // cur_val = 0xFF, to include the last element of the array
         if(cur_val == prev_val)
-            prev_val_cnt++;
+            prev_val_cnt++; // if the repeated count is more than 127, we need to do some checking here and take action [we assumed it will be less than 128]
         else
         {
             if(prev_val_cnt == 1) // no special action needed, just insert the value

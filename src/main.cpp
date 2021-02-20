@@ -3,7 +3,7 @@
 void print_array (uint8_t data_ptr[], uint8_t data_size)
 {
     for(uint8_t i=0u; i<data_size; i++)
-        std::cout<< (int32_t)data_ptr[i] << " ";
+        printf("0x%02hhx ", data_ptr[i]);
     std::cout<< std::endl;
 }
 
